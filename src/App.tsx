@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
 
 import "./index.css";
-import { albumContext } from "./context/albumContext";
+import albumContext from "./context/albumContext";
 import { Album } from "./types/album.type";
 import { ALBUM_URL } from "./utils/constants";
 import Navbar from "./components/nav/Navbar";

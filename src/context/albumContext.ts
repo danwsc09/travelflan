@@ -6,7 +6,9 @@ interface AlbumContext {
   setAlbums: React.Dispatch<React.SetStateAction<Album[]>>;
 }
 
-export const albumContext = createContext<AlbumContext>({
+const albumContext = createContext<AlbumContext>({
   data: [],
   setAlbums: (albums) => {},
 });
+
+export default albumContext;
