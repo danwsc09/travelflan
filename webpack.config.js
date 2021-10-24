@@ -3,26 +3,22 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: path.join(__dirname, "src", "index.js"),
+  entry: path.join(__dirname, "src", "index.tsx"),
   output: {
     path: path.join(__dirname, "build"),
     filename: "index.bundle.js",
   },
-  mode: process.env.NODE_ENV || "development",
   resolve: {
     modules: [path.resolve(__dirname, "src"), "node_modules"],
-    // extensions: js, jsx, ts, tsx
-    // alias: {
-    //   "@api": path.resolve(__dirname, "src/api/"),
-    // },
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
   // https://github.com/webpack/webpack-dev-server/issues/2958#issuecomment-757141969
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"],
+        test: /\.(ts|tsx)$/,
+        use: ["babel-loader", "ts-loader"],
+        exclude: "/node_modules/",
       },
       {
         test: /\.css$/,
