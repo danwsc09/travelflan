@@ -12,7 +12,6 @@ module.exports = {
     modules: [path.resolve(__dirname, "src"), "node_modules"],
     extensions: [".js", ".jsx", ".ts", ".tsx"],
   },
-  // https://github.com/webpack/webpack-dev-server/issues/2958#issuecomment-757141969
   module: {
     rules: [
       {
