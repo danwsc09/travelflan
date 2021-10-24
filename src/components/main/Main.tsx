@@ -1,9 +1,13 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import AlbumTable from "./AlbumTable";
 import LoginPage from "./LoginPage";
 import Box from "@mui/material/Box";
+import { useContext } from "react";
+import AuthContext from "../../context/authContext";
 
 const Main: React.FC = () => {
+  const { authenticated } = useContext(AuthContext);
+
   return (
     <Box
       sx={{
@@ -13,7 +17,7 @@ const Main: React.FC = () => {
     >
       <Switch>
         <Route path="/login">
-          <LoginPage />
+          {authenticated ? <Redirect to="/" /> : <LoginPage />}
         </Route>
         <Route path="/">
           <AlbumTable />

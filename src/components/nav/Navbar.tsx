@@ -1,8 +1,12 @@
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import { useContext } from "react";
+import AuthContext from "../../context/authContext";
 
 const Navbar: React.FC = () => {
+  const { authenticated, setAuthenticated } = useContext(AuthContext);
   return (
     <Box
       sx={{
@@ -24,11 +28,17 @@ const Navbar: React.FC = () => {
         }}
       >
         <Link to="/">
-          <Typography variant="subtitle1">Home</Typography>
+          <Button variant="text">Home</Button>
         </Link>
-        <Link to="/login">
-          <Typography variant="subtitle1">Login</Typography>
-        </Link>
+        {authenticated ? (
+          <Button variant="text" onClick={() => setAuthenticated(false)}>
+            Log out
+          </Button>
+        ) : (
+          <Link to="/login">
+            <Button variant="text">Log in</Button>
+          </Link>
+        )}
       </Box>
     </Box>
   );

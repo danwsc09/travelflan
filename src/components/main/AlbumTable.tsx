@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Pagination from "@mui/material/Pagination";
 import Box from "@mui/material/Box";
 
-import { albumContext } from "../../context/albumContext";
+import albumContext from "../../context/albumContext";
 import { ROWS_PER_PAGE } from "../../utils/constants";
 
 const AlbumTable = () => {

@@ -1,0 +1,3 @@
+const usernameConstraints = {
+  regex: /a/,
+};
