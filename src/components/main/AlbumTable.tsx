@@ -6,14 +6,23 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Pagination from "@mui/material/Pagination";
+import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 
 import albumContext from "../../context/albumContext";
 import { ROWS_PER_PAGE } from "../../utils/constants";
 
 const AlbumTable = () => {
-  const { data } = useContext(albumContext);
+  const { data, isLoading } = useContext(albumContext);
   const [page, setPage] = useState(1);
+
+  if (isLoading) {
+    return (
+      <Box display="flex" justifyContent="center" marginTop="30px">
+        <CircularProgress />;
+      </Box>
+    );
+  }
 
   const handleChangePage = (
     e: React.ChangeEvent<unknown>,
@@ -41,13 +50,13 @@ const AlbumTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {displayData.map((d) => (
-              <TableRow key={d.id}>
-                <TableCell>{d.id}</TableCell>
-                <TableCell>{d.title}</TableCell>
-                <TableCell>{d.userId}</TableCell>
+            {displayData.map((album) => (
+              <TableRow key={album.id}>
+                <TableCell>{album.id}</TableCell>
+                <TableCell>{album.title}</TableCell>
+                <TableCell>{album.userId}</TableCell>
                 <TableCell>
-                  <img src={d.image} />
+                  <img src={album.image} />
                 </TableCell>
               </TableRow>
             ))}

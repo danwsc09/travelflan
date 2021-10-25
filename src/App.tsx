@@ -13,15 +13,18 @@ import { randomImageUrl } from "./utils/randomColor";
 
 const App: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(true); // logged in by default
 
   useEffect(() => {
     const fetchAlbumData = async () => {
+      setIsLoading(true);
       const response = await axios.get(ALBUM_URL);
       const data = response.data as Album[];
 
       // assign and set color
       setAlbums(data.map((d) => ({ ...d, image: randomImageUrl(150) })));
+      setIsLoading(false);
     };
 
     fetchAlbumData();
@@ -29,7 +32,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <AlbumContext.Provider value={{ data: albums, setAlbums }}>
+      <AlbumContext.Provider value={{ data: albums, setAlbums, isLoading }}>
         <AuthContext.Provider value={{ authenticated, setAuthenticated }}>
           <Navbar />
           <Main />
