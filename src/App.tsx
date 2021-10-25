@@ -10,6 +10,7 @@ import { ALBUM_URL } from "./utils/constants";
 import Navbar from "./components/nav/Navbar";
 import Main from "./components/main/Main";
 import { randomImageUrl } from "./utils/randomColor";
+import idGenerator from "./utils/idGenerator";
 
 const App: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
@@ -21,6 +22,8 @@ const App: React.FC = () => {
       setIsLoading(true);
       const response = await axios.get(ALBUM_URL);
       const data = response.data as Album[];
+      const maxId = Math.max(...data.map((album) => album.id));
+      idGenerator.setId(maxId);
 
       // assign and set color
       setAlbums(data.map((d) => ({ ...d, image: randomImageUrl(150) })));

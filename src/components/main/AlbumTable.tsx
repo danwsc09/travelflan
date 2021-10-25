@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
@@ -74,11 +74,11 @@ const AlbumTable = () => {
                 </TableCell>
                 {authenticated ? (
                   <TableCell>
-                    <Redirect to={`/edit/${album.id}`}>
+                    <Link to={`/edit/${album.id}`}>
                       <IconButton color="primary">
                         <EditIcon />
                       </IconButton>
-                    </Redirect>
+                    </Link>
                     <IconButton
                       color="error"
                       onClick={() => handleDelete(album.id)}
