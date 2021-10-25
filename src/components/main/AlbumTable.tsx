@@ -1,4 +1,6 @@
 import React, { useContext, useState } from "react";
+import { Redirect } from "react-router-dom";
+
 import TableContainer from "@mui/material/TableContainer";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -17,7 +19,7 @@ import { ROWS_PER_PAGE } from "../../utils/constants";
 import AuthContext from "../../context/authContext";
 
 const AlbumTable = () => {
-  const { data, isLoading } = useContext(albumContext);
+  const { data, isLoading, setAlbums } = useContext(albumContext);
   const { authenticated } = useContext(AuthContext);
   const [page, setPage] = useState(1);
 
@@ -34,6 +36,12 @@ const AlbumTable = () => {
     pageNumber: number
   ) => {
     setPage(pageNumber);
+  };
+
+  const handleDelete = (id: number) => {
+    if (confirm("Are you sure you want to delete this album?")) {
+      setAlbums(data.filter((album) => album.id !== id));
+    }
   };
 
   const totalPages = Math.ceil(data.length / ROWS_PER_PAGE);
@@ -66,10 +74,15 @@ const AlbumTable = () => {
                 </TableCell>
                 {authenticated ? (
                   <TableCell>
-                    <IconButton color="primary">
-                      <EditIcon />
-                    </IconButton>
-                    <IconButton color="error">
+                    <Redirect to={`/edit/${album.id}`}>
+                      <IconButton color="primary">
+                        <EditIcon />
+                      </IconButton>
+                    </Redirect>
+                    <IconButton
+                      color="error"
+                      onClick={() => handleDelete(album.id)}
+                    >
                       <DeleteIcon />
                     </IconButton>
                   </TableCell>
