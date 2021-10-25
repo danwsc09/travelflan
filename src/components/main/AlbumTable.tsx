@@ -8,12 +8,17 @@ import TableRow from "@mui/material/TableRow";
 import Pagination from "@mui/material/Pagination";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
 import albumContext from "../../context/albumContext";
 import { ROWS_PER_PAGE } from "../../utils/constants";
+import AuthContext from "../../context/authContext";
 
 const AlbumTable = () => {
   const { data, isLoading } = useContext(albumContext);
+  const { authenticated } = useContext(AuthContext);
   const [page, setPage] = useState(1);
 
   if (isLoading) {
@@ -47,6 +52,7 @@ const AlbumTable = () => {
               <TableCell>title</TableCell>
               <TableCell>user id</TableCell>
               <TableCell>preview</TableCell>
+              {authenticated ? <TableCell>Action</TableCell> : ""}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -58,6 +64,18 @@ const AlbumTable = () => {
                 <TableCell>
                   <img src={album.image} />
                 </TableCell>
+                {authenticated ? (
+                  <TableCell>
+                    <IconButton color="primary">
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton color="error">
+                      <DeleteIcon />
+                    </IconButton>
+                  </TableCell>
+                ) : (
+                  ""
+                )}
               </TableRow>
             ))}
           </TableBody>
