@@ -21,6 +21,8 @@ const LoginPage: React.FC = () => {
     }
   };
 
+  const isValidEmail = validateEmail(email);
+
   return (
     <Box width="100%" margin="0 auto" textAlign="center">
       <Typography variant="h4" marginTop="40px">
@@ -34,8 +36,8 @@ const LoginPage: React.FC = () => {
             label="Email"
             margin="normal"
             onChange={(e) => setEmail(e.target.value)}
-            error={!validateEmail(email)}
-            helperText={INVALID_EMAIL_MESSAGE}
+            error={!isValidEmail}
+            helperText={isValidEmail ? "" : INVALID_EMAIL_MESSAGE}
           />
           <TextField
             value={password}
