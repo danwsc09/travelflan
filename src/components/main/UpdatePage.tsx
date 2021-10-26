@@ -4,9 +4,9 @@ import { useParams, Redirect, withRouter } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
-import AlbumContext from "../../context/albumContext";
-import { Typography } from "@mui/material";
+import AlbumContext from "context/albumContext";
 
 interface UrlParams {
   id: string;

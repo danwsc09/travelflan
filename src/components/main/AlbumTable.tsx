@@ -16,9 +16,9 @@ import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
 import Fab from "@mui/material/Fab";
 
-import albumContext from "../../context/albumContext";
-import { ROWS_PER_PAGE } from "../../utils/constants";
-import AuthContext from "../../context/authContext";
+import albumContext from "context/albumContext";
+import { ROWS_PER_PAGE } from "utils/constants";
+import AuthContext from "context/authContext";
 
 const AlbumTable = () => {
   const { data, isLoading, setAlbums } = useContext(albumContext);

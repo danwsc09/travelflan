@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import Typography from "@mui/material/Typography";
+
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-import AuthContext from "../../context/authContext";
-import { logout } from "../../utils/authenticate";
+import AuthContext from "context/authContext";
+import { logout } from "utils/authenticate";
 
 const Navbar: React.FC = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);

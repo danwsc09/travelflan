@@ -1,17 +1,18 @@
 import React, { useContext, useState } from "react";
+
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 
-import { validateEmail } from "../../utils/validation";
+import { validateEmail } from "utils/validation";
 import {
   INVALID_EMAIL_MESSAGE,
   WRONG_CREDENTIALS_MESSAGE,
-} from "../../utils/constants";
-import { login } from "../../utils/authenticate";
-import AuthContext from "../../context/authContext";
+} from "utils/constants";
+import { login } from "utils/authenticate";
+import AuthContext from "context/authContext";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");

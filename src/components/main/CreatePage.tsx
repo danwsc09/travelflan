@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-import AlbumContext from "../../context/albumContext";
+import AlbumContext from "context/albumContext";
 import idGen from "utils/idGenerator";
 import { randomImageUrl } from "utils/randomColor";
 import { Album } from "types/album.type";

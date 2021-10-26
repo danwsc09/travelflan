@@ -1,11 +1,13 @@
-import { Switch, Route, Redirect } from "react-router-dom";
-import AlbumTable from "./AlbumTable";
-import LoginPage from "./LoginPage";
-import Box from "@mui/material/Box";
 import { useContext } from "react";
-import AuthContext from "../../context/authContext";
-import UpdatePage from "./UpdatePage";
-import CreatePage from "./CreatePage";
+import { Switch, Route, Redirect } from "react-router-dom";
+
+import Box from "@mui/material/Box";
+
+import AlbumTable from "components/main/AlbumTable";
+import LoginPage from "components/main/LoginPage";
+import AuthContext from "context/authContext";
+import UpdatePage from "components/main/UpdatePage";
+import CreatePage from "components/main/CreatePage";
 
 const Main: React.FC = () => {
   const { authenticated } = useContext(AuthContext);
