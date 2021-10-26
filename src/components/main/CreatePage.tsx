@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 
 import AlbumContext from "../../context/albumContext";
 import idGen from "utils/idGenerator";
+import { randomImageUrl } from "utils/randomColor";
+import { Album } from "types/album.type";
 
 interface Props {
   history: any;
@@ -21,12 +23,15 @@ const UpdatePage = (props: Props) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // setAlbums(
-    //   data.map((album) => {
-    //     if (album.id !== intId) return album;
-    //     return { ...album, title, image: imageUrl };
-    //   })
-    // );
+    const newAlbum: Album = {
+      title,
+      image: randomImageUrl(150),
+      userId: 99,
+      id: idGen.nextId(),
+    };
+
+    // add new album to top of the list
+    setAlbums([newAlbum].concat(data));
     props.history.push("/");
   };
 
@@ -45,8 +50,9 @@ const UpdatePage = (props: Props) => {
             value={title}
             onChange={handleTitleChange}
             margin="normal"
+            label="Album Title"
           />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Create</Button>
         </Box>
       </form>
     </Box>

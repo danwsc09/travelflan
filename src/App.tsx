@@ -24,6 +24,7 @@ const App: React.FC = () => {
       setIsLoading(true);
       const response = await axios.get(ALBUM_URL);
       const data = response.data as Album[];
+      data.reverse(); // display from highest ID to lowest
 
       // set Id
       const maxId = Math.max(...data.map((album) => album.id));

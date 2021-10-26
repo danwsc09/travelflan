@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import { useContext } from "react";
 import AuthContext from "../../context/authContext";
 import UpdatePage from "./UpdatePage";
+import CreatePage from "./CreatePage";
 
 const Main: React.FC = () => {
   const { authenticated } = useContext(AuthContext);
@@ -22,6 +23,9 @@ const Main: React.FC = () => {
         </Route>
         <Route path="/edit/:id">
           {authenticated ? <UpdatePage /> : <Redirect to="/login" />}
+        </Route>
+        <Route path="/create">
+          <CreatePage />
         </Route>
         <Route path="/">
           <AlbumTable />

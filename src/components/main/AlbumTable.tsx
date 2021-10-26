@@ -54,9 +54,19 @@ const AlbumTable = () => {
 
   return (
     <>
-      <Fab aria-label="add">
-        <AddIcon />
-      </Fab>
+      {authenticated ? (
+        <Box
+          sx={{ display: "flex", justifyContent: "right", marginTop: "10px" }}
+        >
+          <Link to="/create">
+            <Fab aria-label="add" size="small">
+              <AddIcon />
+            </Fab>
+          </Link>
+        </Box>
+      ) : (
+        ""
+      )}
       <TableContainer>
         <Table>
           <TableHead>
