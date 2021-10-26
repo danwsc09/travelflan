@@ -11,17 +11,21 @@ import Navbar from "./components/nav/Navbar";
 import Main from "./components/main/Main";
 import { randomImageUrl } from "./utils/randomColor";
 import idGenerator from "./utils/idGenerator";
+import { isLoggedIn } from "./utils/login";
 
 const App: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [authenticated, setAuthenticated] = useState(true); // logged in by default
+  const [authenticated, setAuthenticated] = useState(isLoggedIn());
 
   useEffect(() => {
     const fetchAlbumData = async () => {
+      // get data
       setIsLoading(true);
       const response = await axios.get(ALBUM_URL);
       const data = response.data as Album[];
+
+      // set Id
       const maxId = Math.max(...data.map((album) => album.id));
       idGenerator.setId(maxId);
 
