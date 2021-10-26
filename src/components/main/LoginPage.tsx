@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 
 import { validateEmail } from "../../utils/validation";
 import { INVALID_EMAIL_MESSAGE } from "../../utils/constants";
-import { login } from "../../utils/login";
+import { login } from "../../utils/authenticate";
 import AuthContext from "../../context/authContext";
 
 const LoginPage: React.FC = () => {

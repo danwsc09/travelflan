@@ -11,7 +11,7 @@ import Navbar from "./components/nav/Navbar";
 import Main from "./components/main/Main";
 import { randomImageUrl } from "./utils/randomColor";
 import idGenerator from "./utils/idGenerator";
-import { isLoggedIn } from "./utils/login";
+import { isLoggedIn } from "./utils/authenticate";
 
 const App: React.FC = () => {
   const [albums, setAlbums] = useState<Album[]>([]);

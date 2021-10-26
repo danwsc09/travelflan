@@ -5,6 +5,7 @@ const EMAIL_KEY = "##email";
 
 export const login = (email: string, password: string): boolean => {
   if (email === DEFAULT_EMAIL && password === DEFAULT_PASSWORD) {
+    localStorage.setItem(EMAIL_KEY, email);
     return true;
   }
   return false;

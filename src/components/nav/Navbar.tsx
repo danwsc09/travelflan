@@ -1,12 +1,19 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { useContext } from "react";
+
 import AuthContext from "../../context/authContext";
+import { logout } from "../../utils/authenticate";
 
 const Navbar: React.FC = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout();
+    setAuthenticated(false);
+  };
+
   return (
     <Box
       sx={{
@@ -31,7 +38,7 @@ const Navbar: React.FC = () => {
           <Button variant="text">Home</Button>
         </Link>
         {authenticated ? (
-          <Button variant="text" onClick={() => setAuthenticated(false)}>
+          <Button variant="text" onClick={handleLogout}>
             Log out
           </Button>
         ) : (
