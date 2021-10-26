@@ -19,7 +19,6 @@ const UpdatePage = (props: Props) => {
   const { data, setAlbums } = useContext(AlbumContext);
 
   const [title, setTitle] = useState("");
-  console.log(idGen);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
