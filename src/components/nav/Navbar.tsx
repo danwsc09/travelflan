@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { styled } from "@mui/system";
 
 import AuthContext from "context/authContext";
 import { logout } from "utils/authenticate";
+
+const ButtonStyled = styled(Button)({ color: "#efefef" });
 
 const Navbar: React.FC = () => {
   const { authenticated, setAuthenticated } = useContext(AuthContext);
@@ -19,7 +22,7 @@ const Navbar: React.FC = () => {
       sx={{
         width: "100%",
         height: "3rem",
-        bgcolor: "#81d4fa",
+        bgcolor: "#333",
         alignItems: "center",
       }}
     >
@@ -28,22 +31,23 @@ const Navbar: React.FC = () => {
           margin: "0 auto",
           width: "90%",
           height: "3rem",
-          bgcolor: "#81d4fa",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
         }}
       >
         <Link to="/">
-          <Button variant="text">Home</Button>
+          <ButtonStyled variant="text" sx={{ color: "#efefef" }}>
+            Home
+          </ButtonStyled>
         </Link>
         {authenticated ? (
-          <Button variant="text" onClick={handleLogout}>
+          <ButtonStyled variant="text" onClick={handleLogout}>
             Log out
-          </Button>
+          </ButtonStyled>
         ) : (
           <Link to="/login">
-            <Button variant="text">Log in</Button>
+            <ButtonStyled variant="text">Log in</ButtonStyled>
           </Link>
         )}
       </Box>
