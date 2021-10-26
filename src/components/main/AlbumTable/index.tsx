@@ -13,12 +13,11 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import AddIcon from "@mui/icons-material/Add";
-import Fab from "@mui/material/Fab";
 
 import albumContext from "context/albumContext";
 import { ROWS_PER_PAGE } from "utils/constants";
 import AuthContext from "context/authContext";
+import CreateButton from "./CreateButton";
 
 const AlbumTable = () => {
   const { data, isLoading, setAlbums } = useContext(albumContext);
@@ -54,19 +53,7 @@ const AlbumTable = () => {
 
   return (
     <>
-      {authenticated ? (
-        <Box
-          sx={{ display: "flex", justifyContent: "right", marginTop: "10px" }}
-        >
-          <Link to="/create">
-            <Fab aria-label="add" size="small">
-              <AddIcon />
-            </Fab>
-          </Link>
-        </Box>
-      ) : (
-        ""
-      )}
+      {authenticated ? <CreateButton /> : ""}
       <TableContainer>
         <Table>
           <TableHead>
@@ -90,7 +77,7 @@ const AlbumTable = () => {
                 {authenticated ? (
                   <TableCell>
                     <Link to={`/edit/${album.id}`}>
-                      <IconButton color="primary">
+                      <IconButton color="success">
                         <EditIcon />
                       </IconButton>
                     </Link>
