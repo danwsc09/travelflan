@@ -9,3 +9,5 @@ export const ROWS_PER_PAGE = 5;
 /* Error messages */
 export const INVALID_EMAIL_MESSAGE =
   "Invalid email. Please double-check your email.";
+
+export const WRONG_CREDENTIALS_MESSAGE = "Wrong email or password.";

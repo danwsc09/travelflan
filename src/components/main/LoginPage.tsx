@@ -2,22 +2,30 @@ import React, { useContext, useState } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import { Button } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import Button from "@mui/material/Button";
 
 import { validateEmail } from "../../utils/validation";
-import { INVALID_EMAIL_MESSAGE } from "../../utils/constants";
+import {
+  INVALID_EMAIL_MESSAGE,
+  WRONG_CREDENTIALS_MESSAGE,
+} from "../../utils/constants";
 import { login } from "../../utils/authenticate";
 import AuthContext from "../../context/authContext";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const { setAuthenticated } = useContext(AuthContext);
 
   const onLogin = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (login(email, password)) {
+      setError(false);
       setAuthenticated(true);
+    } else {
+      setError(true);
     }
   };
 
@@ -47,7 +55,14 @@ const LoginPage: React.FC = () => {
             margin="normal"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button type="submit">Log in</Button>
+          {error ? (
+            <Alert severity="error">{WRONG_CREDENTIALS_MESSAGE}</Alert>
+          ) : (
+            ""
+          )}
+          <Button type="submit" sx={{ marginTop: "20px" }}>
+            Log in
+          </Button>
         </Box>
       </form>
     </Box>
