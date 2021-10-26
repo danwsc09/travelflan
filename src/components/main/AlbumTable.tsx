@@ -13,6 +13,8 @@ import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+import Fab from "@mui/material/Fab";
 
 import albumContext from "../../context/albumContext";
 import { ROWS_PER_PAGE } from "../../utils/constants";
@@ -52,6 +54,9 @@ const AlbumTable = () => {
 
   return (
     <>
+      <Fab aria-label="add">
+        <AddIcon />
+      </Fab>
       <TableContainer>
         <Table>
           <TableHead>

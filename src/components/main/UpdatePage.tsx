@@ -13,10 +13,12 @@ interface UrlParams {
 }
 
 interface Props {
+  // to support react-router-dom's withRouter()
   history: any;
 }
 
 const UpdatePage = (props: Props) => {
+  // Retrieve item to edit
   let { id } = useParams<UrlParams>();
   const { data, setAlbums } = useContext(AlbumContext);
   const intId = parseInt(id);
@@ -54,8 +56,18 @@ const UpdatePage = (props: Props) => {
           <Typography variant="h4" textAlign="center" margin="30px 0 15px">
             Updating album
           </Typography>
-          <TextField value={title} onChange={handleTitleChange} />
-          <TextField value={imageUrl} onChange={handleImageUrlChange} />
+          <TextField
+            value={title}
+            onChange={handleTitleChange}
+            label="Title"
+            margin="normal"
+          />
+          <TextField
+            value={imageUrl}
+            onChange={handleImageUrlChange}
+            label="Image"
+            margin="normal"
+          />
           <Button type="submit">Submit</Button>
         </Box>
       </form>
