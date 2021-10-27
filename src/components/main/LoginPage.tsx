@@ -39,6 +39,9 @@ const LoginPage: React.FC = () => {
       </Typography>
       <form onSubmit={onLogin}>
         <Box display="flex" flexDirection="column" width="30%" margin="0 auto">
+          <Alert severity="info">
+            Demo email: test@test.com, password: qwe123
+          </Alert>
           <TextField
             value={email}
             id="email"
